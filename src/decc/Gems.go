@@ -4,8 +4,8 @@ import (
 	// "bufio"
 	"encoding/json"
 	"fmt"
-	"log"
 	"io"
+	"log"
 	"os"
 	"os/exec"
 	// "regexp"
@@ -134,12 +134,12 @@ func TheDeccGem() *Gem {
 
 func WriteGemFile(out io.Writer) {
 	gem := TheDeccGem()
-	if nil==gem {
+	if nil == gem {
 		log.Printf("Failed to get theDeccGem")
 		os.Exit(1)
 	}
 	err := gemfileTemplate.Execute(out, gem)
-	if nil!=err {
+	if nil != err {
 		log.Printf(err.Error())
 		os.Exit(1)
 	}
@@ -147,7 +147,7 @@ func WriteGemFile(out io.Writer) {
 
 var gemfileTemplate = template.Must(template.New("gemfile").Parse(`source 'http://rubygems.org'
 # Framework
-gem 'sinatra'
+gem 'sinatra', '1.4.5'
 
 # Views
 gem 'json'
